@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>API</title>
+</head>
+<body>
+
+
+
+    <script>
+        var flavors = ["vanilla ice creams, chocolate ice creams"]
+
+        var queryURL = "https://api.nal.usda.gov/ndb/search/?format=json&q=vanilla%20ice%20cream&ds=Standard%20Reference&api_key=txP1V3zspB7kJrpwR6ack7OIjbhY8BRrfDaF4kjV"
+
+    // Here we run our AJAX call to the API
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+
+
+
+
+        
+      });        
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>

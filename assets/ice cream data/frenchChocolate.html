@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>French Chocolate</title>
+</head>
+<body>
+    <h1>French Chocolate</h1>
+    <div class="water"></div>
+    <div class="energy"></div>
+    <div class="protein"></div>
+    <div class="fat"></div>
+    <div class="carb"></div>
+    <div class="fiber"></div>
+    <div class="sugar"></div>
+    <div class="calcium"></div>
+    <div class="iron"></div>
+    <div class="sodium"></div>
+    <div class="vitaminC"></div>
+    <div class="vitaminA"></div>
+    <div class="fattyacids"></div>
+    <div class="cholesterol"></div>
+
+    <script>
+        var queryURL = "https://api.nal.usda.gov/ndb/reports/?ndbno=19880&type=b&format=json&api_key=txP1V3zspB7kJrpwR6ack7OIjbhY8BRrfDaF4kjV"
+
+    // Here we run our AJAX call to the API
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+
+        // Transfer content to HTML
+        $(".water").html("Water: " + response.report.food.nutrients[0].value + response.report.food.nutrients[0].unit);
+        $(".energy").html("Energy: " + response.report.food.nutrients[1].value + response.report.food.nutrients[1].unit);
+        $(".protein").html("Protein: " + response.report.food.nutrients[2].value + response.report.food.nutrients[2].unit);
+        $(".fat").html("Fat: " + response.report.food.nutrients[3].value + response.report.food.nutrients[3].unit);
+        $(".carb").html("Carbohydrate: " + response.report.food.nutrients[4].value + response.report.food.nutrients[4].unit);
+        $(".fiber").html("Fiber: " + response.report.food.nutrients[5].value + response.report.food.nutrients[5].unit);
+        $(".sugar").html("Sugar: " + response.report.food.nutrients[6].value + response.report.food.nutrients[6].unit);
+        $(".calcium").html("Calcium: " + response.report.food.nutrients[7].value + response.report.food.nutrients[7].unit);
+        $(".iron").html("Iron: " + response.report.food.nutrients[8].value + response.report.food.nutrients[8].unit);
+        $(".sodium").html("Sodium: " + response.report.food.nutrients[9].value + response.report.food.nutrients[9].unit);
+        $(".vitaminC").html("Vitamin C: " + response.report.food.nutrients[10].value + response.report.food.nutrients[10].unit);
+        $(".vitaminA").html("Vitamin A: " + response.report.food.nutrients[11].value + response.report.food.nutrients[11].unit);
+        $(".fattyacids").html("Fatty Acid: " + response.report.food.nutrients[12].value + response.report.food.nutrients[12].unit);
+        $(".cholesterol").html("Cholesterol: " + response.report.food.nutrients[13].value + response.report.food.nutrients[13].unit);
+
+        // Transfer content to object 
+        var frenchChocolate = {
+            water: "Water: " + response.report.food.nutrients[0].value + response.report.food.nutrients[0].unit,
+            energy: "Energy: " + response.report.food.nutrients[1].value + response.report.food.nutrients[1].unit,
+            protein: "Protein: " + response.report.food.nutrients[2].value + response.report.food.nutrients[2].unit,
+            fat: "Fat: " + response.report.food.nutrients[3].value + response.report.food.nutrients[3].unit,
+            carb: "Carbohydrate: " + response.report.food.nutrients[4].value + response.report.food.nutrients[4].unit,
+            fiber: "Fiber: " + response.report.food.nutrients[5].value + response.report.food.nutrients[5].unit,
+            sugar: "Sugar: " + response.report.food.nutrients[6].value + response.report.food.nutrients[6].unit,
+            calcium: "Calcium: " + response.report.food.nutrients[7].value + response.report.food.nutrients[7].unit,
+            iron: "Iron: " + response.report.food.nutrients[8].value + response.report.food.nutrients[8].unit,
+            sodium: "Sodium: " + response.report.food.nutrients[9].value + response.report.food.nutrients[9].unit,
+            vitaminC: "Vitamin C: " + response.report.food.nutrients[10].value + response.report.food.nutrients[10].unit,
+            vitaminA: "Vitamin A: " + response.report.food.nutrients[11].value + response.report.food.nutrients[11].unit,
+            fattyAcid: "Fatty Acid: " + response.report.food.nutrients[12].value + response.report.food.nutrients[12].unit,
+            cholesterol: "Cholesterol: " + response.report.food.nutrients[13].value + response.report.food.nutrients[13].unit,
+        }
+
+        console.log(frenchChocolate);
+
+
+        
+      });        
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
